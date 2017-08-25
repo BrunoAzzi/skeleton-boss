@@ -1,0 +1,33 @@
+<div fxLayoutAlign="center center" fxFill>
+  <md-card class="example-card">
+    <md-card-header>
+      <div *ngIf="isLoggedIn">
+        <div md-card-avatar class="background-image: url({{user?.photoURL}});background-size: cover;"></div>
+        <md-card-title>{{user?.displayName}}</md-card-title>
+        <md-card-subtitle>{{user?.email}}</md-card-subtitle>
+      </div>
+      <md-card-title *ngIf="!isLoggedIn">Entrar</md-card-title>
+    </md-card-header>
+    <md-card-content fxLayout="column">
+
+      <button md-raised-button (click)="loginGoogle()" color="primary">Sign in with Google</button>
+      <button md-raised-button (click)="logout()">Logout</button>
+      <!--<button md-raised-button (click)="mailLogin = true" *ngIf="!mailLogin">Sign in with email</button>-->
+
+      <!--<div *ngIf="mailLogin">-->
+      <!--<md-input-container>-->
+      <!--<input mdInput placeholder="e-mail" type="email" ([ngModel])="email">-->
+      <!--</md-input-container>-->
+
+      <!--<md-input-container>-->
+      <!--<input mdInput name="email" placeholder="password" type="password" ([ngModel])="password" >-->
+      <!--</md-input-container>-->
+      <!--</div>-->
+
+    </md-card-content>
+    <!--<md-card-actions fxLayout="row" fxLayoutAlign="end center">-->
+    <!--<button md-button>Forgot password</button>-->
+    <!--<button md-button (click)="loginEmailAndPassword()">  {{ (user | async) ? "Trocar Usuário" : "Entrar" }}</button>-->
+    <!--</md-card-actions>-->
+  </md-card>
+</div>

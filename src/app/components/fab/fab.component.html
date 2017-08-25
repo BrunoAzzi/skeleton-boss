@@ -1,0 +1,5 @@
+<button md-fab (click)="toggleMiniFab()" [ngClass]="{ 'rotated': showMiniFab }">
+  <md-icon>add</md-icon>
+</button>
+
+<ng-content *ngIf="showMiniFab"></ng-content>
