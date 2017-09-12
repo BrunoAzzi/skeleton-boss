@@ -1,0 +1,24 @@
+<div fxLayout="column" fxFlexFill>
+  <div fxLayout fxLayoutAlign="end center">
+    <button class="close" md-icon-button [md-dialog-close]="true">
+      <md-icon>close</md-icon>
+    </button>
+  </div>
+
+  <form fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex>
+    <div fxLayout fxLayoutAlign="center center">
+      <img src="{{company.logo}}">
+    </div>
+
+    <md-input-container>
+      <input mdInput placeholder="Name" name="name" [(ngModel)]="company.name" required>
+    </md-input-container>
+
+    <div fxLayout fxLayoutAlign="end center">
+      <!--TODO disabled until valid form-->
+      <button class="submit" md-raised-button (click)="submit()">Cadastrar</button>
+    </div>
+  </form>
+</div>
+
+

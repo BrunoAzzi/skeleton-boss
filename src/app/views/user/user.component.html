@@ -1,0 +1,29 @@
+<div class="container" fxLayout fxLayoutAlign="center" fxFlexFill>
+
+  <div fxFlex="70" fxLayout="column">
+    <div>
+      <button class="add" md-icon-button (click)="addUserDialog()" md-tooltip="Adicionar usuário" mdTooltipPosition="after">
+        <md-icon>add_circle</md-icon>
+      </button>
+    </div>
+    <md-list>
+      <md-list-item *ngFor="let user of userList | async">
+        <img md-list-avatar src="{{user.avatar}}" alt="placeholder-image">
+        <h3 md-line> {{user.name}} </h3>
+        <h4 md-line> {{user.email}} </h4>
+        <span> {{user.phone}} </span>
+        <span> {{user.type}} </span>
+        <span> {{user.company}} </span>
+        <div class="tools" fxLayout>
+          <button md-icon-button fxLayoutAlign="center center" (click)="edit(user)">
+            <md-icon>edit</md-icon>
+          </button>
+          <button md-icon-button fxLayoutAlign="center center" (click)="remove(user)">
+            <md-icon>delete</md-icon>
+          </button>
+        </div>
+      </md-list-item>
+    </md-list>
+  </div>
+</div>
+

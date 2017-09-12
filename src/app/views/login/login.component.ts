@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +15,14 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   returnUrl = '/';
 
-  // email = '';
-  // password = '';
+  password: string;
+  email: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: AuthService,
+    private snackBar: MdSnackBar,
   ) { }
 
   ngOnInit() {
@@ -32,20 +34,16 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  loginGoogle() {
-    this.service.loginWithGoogle().then( data => {
-        this.router.navigate([this.returnUrl]);
+  loginEmailAndPassword() {
+    this.service.loginWithEmailAndPassword(this.email, this.password).then(
+      success => {
+        this.router.navigateByUrl(this.returnUrl);
       },
       error => {
-        alert(error);
-      });
+        this.snackBar.open(error.message, 'Ok', { duration: 4000 });
+      }
+    );
   }
 
-  // loginEmailAndPassword() {
-  //   this.service.loginWithEmailAndPassword(this.email, this.password);
-  // }
 
-  logout() {
-    this.service.logout();
-  }
 }

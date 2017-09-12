@@ -1,0 +1,29 @@
+md-sidenav {
+  background: #2b303b;
+
+  md-toolbar {
+    background-color: #272b35;
+    color: white;
+  }
+}
+
+md-toolbar {
+  button {
+    border-radius: 0;
+    min-width: 0;
+    height: 100%;
+  }
+}
+
+md-list-item {
+  color: #a7a9ae !important;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.container {
+  padding: 30px;
+}

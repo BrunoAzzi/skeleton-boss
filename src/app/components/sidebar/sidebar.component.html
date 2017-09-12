@@ -1,0 +1,48 @@
+<md-sidenav-container fxLayout fxFlexFill>
+  <md-sidenav opened fxFlex="15">
+    <md-toolbar role="toolbar" color="primary" class="mat-elevation-z2">
+      <span fxFlexAlign="center" style="width: 22px; text-align: center; margin-left: -3px; align-self: center;">
+        <img src="{{(company | async)?.logo}}" style="width: 25px; vertical-align: text-top;">
+      </span>
+      <img fxFlexAlign="center" src="assets/img/logo.png" style="height: 35px; margin-left: 24px; margin-bottom: -5px; align-self: center;">
+    </md-toolbar>
+
+    <md-nav-list fxLayout="column">
+      <md-list-item routerLink="/overview">
+        <md-icon md-list-icon>dashboard</md-icon>
+        <h4 md-line>Dashboard</h4>
+      </md-list-item>
+      <md-list-item routerLink="/user-list" *ngIf="(currentUser | async)?.type === 'admin'">
+        <md-icon md-list-icon>supervisor_account</md-icon>
+        <h4 md-line>Usuários</h4>
+      </md-list-item>
+      <md-list-item routerLink="/settings" *ngIf="(currentUser | async)?.company === 'senai'">
+        <md-icon md-list-icon>settings</md-icon>
+        <h4 md-line>Configurações</h4>
+      </md-list-item>
+    </md-nav-list>
+  </md-sidenav>
+  <div fxLayout="column" fxFlex>
+    <md-toolbar role="toolbar" color="white" class="mat-elevation-z2">
+      <span fxFlex=""></span>
+      <button md-button [mdMenuTriggerFor]="appMenu">
+        <img class="avatar" src="{{(user | async)?.photoURL}}">
+        <span>{{(user | async)?.displayName}}</span>
+      </button>
+      <md-menu #appMenu="mdMenu" [overlapTrigger]="false">
+        <button md-menu-item>
+          <md-icon>account_circle</md-icon>
+          <span>Profile</span>
+        </button>
+        <md-divider></md-divider>
+        <button md-menu-item (click)="logout()">
+          <md-icon>exit_to_app</md-icon>
+          <span>Logout</span>
+        </button>
+      </md-menu>
+    </md-toolbar>
+    <div class="container" fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</md-sidenav-container>

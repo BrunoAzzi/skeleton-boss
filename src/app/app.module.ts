@@ -11,12 +11,18 @@ import { LoginComponent } from './views/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverviewComponent } from './views/overview/overview.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
-import { FabComponent } from './components/fab/fab.component';
-import { AccountFormComponent } from './views/account/form/form.component';
 import { FormsModule } from '@angular/forms';
-import { PrimeNgModule } from './material/prime-ng.module';
 import { MaterialModule } from './material/material.module';
-import { AccountService } from './services/account.service';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ConfigurationComponent } from './views/configuration/configuration.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { UserComponent } from './views/user/user.component';
+import { UserService } from './services/user.service';
+import { UserFormComponent } from './views/user/form/form.component';
+import { LoginWrapperComponent } from './components/login-wrapper/login-wrapper.component';
+import { CompanyFormComponent } from './components/company/company.component';
+import { CompanyService } from './services/company.service';
 
 @NgModule({
   declarations: [
@@ -24,22 +30,33 @@ import { AccountService } from './services/account.service';
     LoginComponent,
     OverviewComponent,
     PageNotFoundComponent,
-    FabComponent,
-    AccountFormComponent
+    ResetPasswordComponent,
+    SidebarComponent,
+    ConfigurationComponent,
+    UserComponent,
+    UserFormComponent,
+    LoginWrapperComponent,
+    CompanyFormComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    PrimeNgModule,
     MaterialModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxChartsModule,
   ],
-  providers: [ AccountService ],
-  entryComponents: [ AccountFormComponent ],
+  providers: [
+    UserService,
+    CompanyService,
+  ],
+  entryComponents: [
+    UserFormComponent,
+    CompanyFormComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

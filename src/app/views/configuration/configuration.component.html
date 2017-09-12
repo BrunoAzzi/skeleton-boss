@@ -1,0 +1,27 @@
+<div class="container" fxLayout fxLayoutAlign="center" fxFlexFill>
+
+  <div fxFlex="70" fxLayout="column">
+    <div>
+      <button class="add" md-icon-button (click)="addUserDialog()" md-tooltip="Adicionar uma empresa" mdTooltipPosition="after">
+        <md-icon>add_circle</md-icon>
+      </button>
+    </div>
+    <md-list>
+      <md-list-item *ngFor="let company of companyList | async">
+
+        <img md-list-avatar src="{{company.logo}}" alt="placeholder-image">
+        <h3 md-line> {{company.name}} </h3>
+
+        <div class="tools" fxLayout>
+          <button md-icon-button fxLayoutAlign="center center" (click)="edit(company)">
+            <md-icon>edit</md-icon>
+          </button>
+          <button md-icon-button fxLayoutAlign="center center" (click)="remove(company)">
+            <md-icon>delete</md-icon>
+          </button>
+        </div>
+      </md-list-item>
+    </md-list>
+  </div>
+</div>
+

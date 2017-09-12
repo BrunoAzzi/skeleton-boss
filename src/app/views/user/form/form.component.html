@@ -1,0 +1,49 @@
+<div fxLayout="column" fxFlexFill>
+  <div fxLayout fxLayoutAlign="end center">
+    <button class="close" md-icon-button [md-dialog-close]="true">
+      <md-icon>close</md-icon>
+    </button>
+  </div>
+
+  <form fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex>
+    <div fxLayout fxLayoutAlign="center center">
+      <img src="{{user.avatar}}">
+    </div>
+
+    <md-input-container>
+      <input mdInput placeholder="Name" name="name" [(ngModel)]="user.name" required>
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Telefone" name="phone" type="phone" [(ngModel)]="user.phone" required>
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Email" name="email" type="email" [(ngModel)]="user.email" required>
+    </md-input-container>
+
+    <md-input-container *ngIf="!user?.uid">
+      <input mdInput placeholder="Password" type="password" name="password" [(ngModel)]="user.password" required>
+    </md-input-container>
+
+    <md-select name="role" placeholder="Acesso" [(ngModel)]="user.type" required>
+      <md-option *ngFor="let accessType of accessTypeList" [value]="accessType.value">
+        {{ accessType.label }}
+      </md-option>
+    </md-select>
+
+    <md-select name="company" placeholder="Empresa" [(ngModel)]="user.company" required *ngIf="(currentUser | async)?.company === 'senai'">
+      <md-option *ngFor="let company of companyList | async" [value]="company.name">
+        {{ company.name }}
+      </md-option>
+    </md-select>
+
+    <div fxLayout fxLayoutAlign="end center">
+      <!--TODO disabled until valid form-->
+      <button class="submit" md-raised-button (click)="submit()">Cadastrar</button>
+    </div>
+  </form>
+
+</div>
+
+

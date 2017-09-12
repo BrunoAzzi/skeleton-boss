@@ -1,37 +1,72 @@
 <div class="container" fxLayout fxLayoutAlign="center" fxFlexFill>
-  <div fxFlex="70">
-    <div fxFlex="50" fxLayout="column">
-      <md-card id="balance">
-        <md-card-content>
-          <p>Olá, {{displayName}}</p>
-          <p>{{accountBalance | currency:'BRL':true}}</p>
-        </md-card-content>
+
+  <div fxFlex="90" fxLayout="column">
+    <div fxLayout >
+      <md-card >
+        <ngx-charts-bar-vertical
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="single"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+      </md-card>
+
+      <md-card >
+        <ngx-charts-bar-vertical
+          [view]="view1"
+          [scheme]="colorScheme"
+          [results]="single"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
       </md-card>
     </div>
 
-    <div fxFlex="50" fxLayout="column">
-      <md-card id="quick-access">
-        <button md-button>
-          <md-icon>add</md-icon>
-          <span>Despesa</span>
-        </button>
-        <button md-button>
-          <md-icon>add</md-icon>
-          <span>Receita</span>
-        </button>
+    <div fxLayout >
+      <md-card >
+        <ngx-charts-bar-vertical
+          [view]="view2"
+          [scheme]="colorScheme"
+          [results]="single"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
       </md-card>
 
-      <md-card id="my-accounts">
-        <div *ngFor="let account of accountList | async">
-          {{ account.title }}
-        </div>
+      <md-card>
+        <ngx-charts-bar-vertical
+          [view]="view3"
+          [scheme]="colorScheme"
+          [results]="single"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
       </md-card>
     </div>
   </div>
 </div>
-
-<app-fab>
-  <button md-mini-fab mdTooltip="Cadastrar conta" mdTooltipPosition="before" (click)="accountFormDialog()" ><md-icon>account_balance</md-icon></button>
-  <!--<button md-mini-fab mdTooltip="Cadastrar categoria" mdTooltipPosition="before" (click)="categoryFormDialog()" ><md-icon>bookmark</md-icon></button>-->
-  <!--<button md-mini-fab mdTooltip="Cadastrar lançamento" mdTooltipPosition="before" (click)="entryFormDialog()" ><md-icon>payment</md-icon></button>-->
-</app-fab>

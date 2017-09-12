@@ -1,9 +1,0 @@
-<form fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex>
-
-  <div fxLayout fxLayoutAlign="space-around center">
-    <input name="title" pInputText [(ngModel)]="account.title" placeholder="Nome"/>
-    <p-dropdown name="type" [options]="typeList" [(ngModel)]="account.type" aria-placeholder="Tipo"></p-dropdown>
-  </div>
-
-  <button md-raised-button class="raised-button" fxFlexAlign="center" (click)="registerAccount()">Cadastrar</button>
-</form>
